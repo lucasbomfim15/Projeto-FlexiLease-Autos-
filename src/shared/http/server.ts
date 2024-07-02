@@ -1,5 +1,5 @@
 import app from '@shared/http/app';
-import conn from '@modules/users/db/conn';
+import conn from "@shared/db/conn"
 
 
 const PORT = process.env.PORT || 3000;
