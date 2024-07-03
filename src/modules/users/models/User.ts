@@ -1,6 +1,20 @@
-import mongoose from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 
-const { Schema } = mongoose;
+interface IUser extends Document {
+    _id: string;
+    name: string;
+    cpf: string;
+    birth: Date;
+    email: string;
+    password: string;
+    cep: string;
+    qualified: string;
+    patio: string;
+    complement: string;
+    neighborhood: string;
+    locality: string;
+    uf: string;
+  }
 
 const userSchema = new Schema({
     name: { type: String, required: true },
@@ -17,6 +31,6 @@ const userSchema = new Schema({
     uf: { type: String, default: '' }, 
 });
 
-const User = mongoose.model("User", userSchema);
+const User = model<IUser>('User', userSchema);
 
-module.exports = {User, userSchema}
+export { IUser, User }
