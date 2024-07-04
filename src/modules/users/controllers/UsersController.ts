@@ -72,7 +72,7 @@ export default class UsersController {
         res.status(200).json(deleteduser);
        
     }catch(error){
-        res.status(500).json({ error: 'Erro ao encontrar usuário' });
+        res.status(500).json({ error: 'Erro ao deletar usuário' });
     }
   }
 
