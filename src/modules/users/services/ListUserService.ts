@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 import { IUser } from '../models/User';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 interface PaginationOptions {
   page: number;

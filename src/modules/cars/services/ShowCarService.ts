@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import CarsRepository from '../repositories/CarsRepository';
 import { ICar } from '../models/Car';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 
 export default class ShowCarService{
@@ -16,7 +16,7 @@ export default class ShowCarService{
             return car;
 
           } catch (error) {
-            throw new AppError(`Erro ao encontrar o carro pelo ID`);
+            throw new AppError(`ID do Carro não fornecido`);
           }
       }
 

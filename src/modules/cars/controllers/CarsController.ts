@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import CarsRepository from '../repositories/CarsRepository';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { Car } from '../models/Car'
 import CreateCarService from '../services/CreateCarService';
 import ListCarService from '../services/ListCarService';

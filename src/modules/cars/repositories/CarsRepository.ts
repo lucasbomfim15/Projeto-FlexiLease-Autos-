@@ -1,4 +1,4 @@
-import { Car, ICar, IAccessory } from '@modules/cars/models/Car';
+import { Car, ICar, IAccessory } from '../../../modules/cars/models/Car';
 import { Document, Types } from 'mongoose';
 
 class CarsRepository {

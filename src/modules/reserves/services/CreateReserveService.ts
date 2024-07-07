@@ -1,7 +1,7 @@
 import ReserveRepository from '../repositories/ReserveRepository';
 import { IReserve } from '../models/Reserve';
-import { User } from '@modules/users/models/User';
-import { Car } from '@modules/cars/models/Car';
+import { User } from '../../../modules/users/models/User';
+import { Car } from '../../../modules/cars/models/Car';
 
 class CreateReserveService{
     async createReserve(reserveData: Partial<IReserve>): Promise<IReserve | string> {

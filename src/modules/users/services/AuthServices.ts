@@ -1,7 +1,7 @@
 import { sign } from 'jsonwebtoken';
 import UsersRepository from '../repositories/UsersRepository';
 import { IUser } from '../models/User';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 interface IRequest {
   email: string;

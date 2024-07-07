@@ -1,6 +1,6 @@
 import { ICar } from '../models/Car';
 import CarsRepository from '../repositories/CarsRepository';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 interface IUpdateRequest {
   model?: string;

@@ -1,6 +1,6 @@
 
-import {Car, IAccessory} from '@modules/cars/models/Car';
-import AppError from '@shared/errors/AppError';
+import {Car, IAccessory} from '../../../modules/cars/models/Car';
+import AppError from '../../../shared/errors/AppError';
 
 interface IRequest {
   car_id: string;

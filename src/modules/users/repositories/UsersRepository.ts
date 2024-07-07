@@ -1,13 +1,28 @@
-import { User, IUser } from '@modules/users/models/User'
-import { Document, Types } from 'mongoose';
+import { User, IUser } from '../models/User';
+import { Types } from 'mongoose';
+
+type UserData = {
+  name: string;
+  cpf: string;
+  birth: Date;
+  email: string;
+  password: string;
+  cep: string;
+  qualified: string;
+  patio: string;
+  complement: string;
+  neighborhood: string;
+  locality: string;
+  uf: string;
+};
 
 class UserRepository {
-  async createUser(userData: Omit<IUser, '_id'>): Promise<IUser> {
+  async createUser(userData: UserData): Promise<IUser> {
     const user = new User(userData);
     return await user.save();
   }
 
-  async updateUser(id: string, userData: Partial<IUser>): Promise<IUser | null> {
+  async updateUser(id: string, userData: Partial<UserData>): Promise<IUser | null> {
     if (!Types.ObjectId.isValid(id)) {
       throw new Error('Invalid user ID');
     }

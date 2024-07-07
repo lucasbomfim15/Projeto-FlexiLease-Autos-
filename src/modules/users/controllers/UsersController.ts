@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import ShowUserService from '../services/ShowUserService';
 import ListUserService from '../services/ListUserService';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import { User } from "../models/User";
 import DeleteUserService from '../services/DeleteUserService';
 import UpdateUserService from '../services/UpdateUserService';

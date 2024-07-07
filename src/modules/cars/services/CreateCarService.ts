@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { ICar } from '../models/Car';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import CarsRepository from '../repositories/CarsRepository';
 
 

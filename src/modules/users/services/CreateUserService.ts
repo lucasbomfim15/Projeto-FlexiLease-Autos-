@@ -2,7 +2,7 @@ import UsersRepository from "../repositories/UsersRepository";
 import { IUser } from "../models/User";
 import * as mongoose from 'mongoose';
 import isValidCPF from "../Utils/IsValidCpf";
-import AppError from "@shared/errors/AppError";
+import AppError from "../../../shared/errors/AppError";
 import axios from "axios";
 
 class CreateUserService{

@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface IUser extends Document {
+interface IUser {
     _id: string;
     name: string;
     cpf: string;

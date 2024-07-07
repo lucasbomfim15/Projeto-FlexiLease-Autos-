@@ -9,7 +9,7 @@ const authController = new AuthController
 
 usersRoutes.post('/users', usersController.createUser)
 usersRoutes.get('/users', authMiddleware, usersController.listUsers)
-usersRoutes.get('/users/:id', usersController.show)
+usersRoutes.get('/users/:id',  usersController.show)
 usersRoutes.delete('/users/:id', usersController.delete)
 usersRoutes.put('/users/:id', usersController.update)
 
