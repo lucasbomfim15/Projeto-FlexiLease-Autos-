@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 
-const MONGO_DB_URL = 'mongodb+srv://bmfmlucas:Q1IPVdaQJAj39pdc@flexilease-api.fszu1nf.mongodb.net/?retryWrites=true&w=majority&appName=flexilease-api';
+dotenv.config();
+
 
 const connectToDatabase = (
-  mongoDatabaseURI = process.env.MONGO_URI
-    || MONGO_DB_URL,
+  mongoDatabaseURI = process.env.MONGO_DB_URL as string
+    
 ) => mongoose.connect(mongoDatabaseURI);
 
 export default connectToDatabase;

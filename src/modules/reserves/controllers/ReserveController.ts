@@ -8,6 +8,41 @@ import DeleteReserveService from '../services/DeleteReserveService';
 
 
 export default class ReserveController {
+    /**
+   * @swagger
+   * /api/v1/reserve:
+   *   post:
+   *     summary: Create a new reserve
+   *     tags: [Reserves]
+   *     security:
+   *       - bearerAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             required:
+   *               - start_date
+   *               - end_date
+   *               - id_car
+   *               - id_user
+   *             properties:
+   *               start_date:
+   *                 type: string
+   *               end_date:
+   *                 type: string
+   *               id_car:
+   *                 type: string
+   *               id_user:
+   *                 type: string
+   *               
+   *     responses:
+   *       201:
+   *         description: reserve created successfully
+   *       400:
+   *         description: Invalid input
+   */
     async createReserve(req: Request, res: Response): Promise<Response> {
         const createReserve = new CreateReserveService()
         try {
@@ -19,6 +54,27 @@ export default class ReserveController {
         }    
 }
 
+/**
+   * @swagger
+   * /api/v1/reserve:
+   *   get:
+   *     summary: List all reserves
+   *     tags: [Reserves]
+   *     security:
+   *       - bearerAuth: []
+   *     responses:
+   *       200:
+   *         description: A list of reserves
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: array
+   *               items:
+   *                 $ref: '#/components/schemas/Reserve'
+   *       400:
+   *         description: Failed to list reserves
+   */
+
     async getAllReserves(req: Request, res: Response): Promise<Response> {
         const  reserveService = new ListReserveService();
         try {
@@ -29,6 +85,29 @@ export default class ReserveController {
         }
     }
 
+   /**
+   * @swagger
+   * /api/v1/reserve/{id}:
+   *   get:
+   *     summary: Get a reserve by ID
+   *     tags: [Reserves]
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: The reserve ID
+   *     responses:
+   *       200:
+   *         description: The reserve data
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/Reserve'
+   *       404:
+   *         description: Reserve not found
+   */
 
     async getReserveById(req: Request, res: Response): Promise<Response> {
         const  showReserve = new ShowReserveService();
@@ -45,7 +124,31 @@ export default class ReserveController {
         }
     }
 
-
+/**
+   * @swagger
+   * /api/v1/reserve/{id}:
+   *   put:
+   *     summary: Update a reserve by ID
+   *     tags: [Reserves]
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: The reserve ID
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             $ref: '#/components/schemas/Reserve'
+   *     responses:
+   *       200:
+   *         description: Reserve updated successfully
+   *       404:
+   *         description: Reserve not found
+   */
     async updateReserve(req: Request, res: Response): Promise<Response> {
         const updateReserve = new UpdateReserveService();
         try {
@@ -60,7 +163,25 @@ export default class ReserveController {
         }
     }
 
-
+    /**
+   * @swagger
+   * /api/v1/reserve/{id}:
+   *   delete:
+   *     summary: Delete a reserve by ID
+   *     tags: [Reserves]
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: The reserve ID
+   *     responses:
+   *       200:
+   *         description: Reserve deleted successfully
+   *       404:
+   *         description: Reserve not found
+   */
     async deleteReserve(req: Request, res: Response): Promise<Response> {
         const deleteReserve = new DeleteReserveService();
         try {

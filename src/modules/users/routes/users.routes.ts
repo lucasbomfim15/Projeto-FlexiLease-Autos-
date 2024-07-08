@@ -10,10 +10,10 @@ const usersController = new UsersController();
 const authController = new AuthController
 
 usersRoutes.post('/users', validate(createUserSchema) ,usersController.createUser)
-usersRoutes.get('/users',  usersController.listUsers)
-usersRoutes.get('/users/:id',  usersController.show)
-usersRoutes.delete('/users/:id', usersController.delete)
-usersRoutes.put('/users/:id', usersController.update)
+usersRoutes.get('/users',authMiddleware,  usersController.listUsers)
+usersRoutes.get('/users/:id',authMiddleware,  usersController.show)
+usersRoutes.delete('/users/:id',authMiddleware, usersController.delete)
+usersRoutes.put('/users/:id',authMiddleware, usersController.update)
 
 usersRoutes.post('/auth', authController.authenticate);
 
