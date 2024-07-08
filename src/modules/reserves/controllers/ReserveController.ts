@@ -14,6 +14,7 @@ export default class ReserveController {
             const reserve = await createReserve.createReserve(req.body);
             return res.status(201).json(reserve);
         } catch (error) {
+            console.log(error)
             return res.status(400).json(new AppError("Falha ao criar reserva"));
         }    
 }
