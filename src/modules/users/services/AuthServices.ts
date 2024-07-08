@@ -25,7 +25,7 @@ class AuthServices {
     }
 
     const token = sign({ id: user._id }, process.env.JWT_SECRET || 'defaultSecret', {
-      expiresIn: '1d',
+      expiresIn: '12h',
     });
 
     return {
