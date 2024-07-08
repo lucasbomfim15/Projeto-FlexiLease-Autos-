@@ -12,27 +12,22 @@ export default class UsersController {
   async createUser(req: Request, res: Response) {
     const createUser = new CreateUserService();
     try {
-      if (!req.body) {
-        throw new AppError('Dados do usuário não fornecidos.');
-      }
-
       const newUser = await createUser.execute(req.body);
       res.status(201).json(newUser);
     } catch (error) {
       console.error(error);
-      res.status(400).json({ error: new AppError('failed to create user') });
+      res.status(400).json({ error:  'Failed to create user' });
     }
   }
 
   async listUsers(req: Request, res: Response): Promise<void> {
-    const listUser = new ListUserService(User)
+    const listUser = new ListUserService(User);
     try {
+      const { page = 1, limit = 10 } = req.query;
+      const parsedPage = parseInt(page as string, 10);
+      const parsedLimit = parseInt(limit as string, 10);
 
-        const { page = 1, limit = 10 } = req.query; 
-        const parsedPage = parseInt(page as string, 10);
-        const parsedLimit = parseInt(limit as string, 10);
-      
-        const result = await listUser.listUsers({ page: parsedPage, limit: parsedLimit });
+      const result = await listUser.listUsers({ page: parsedPage, limit: parsedLimit });
       res.status(200).json({
         users: result.users,
         pagination: {
@@ -44,43 +39,39 @@ export default class UsersController {
         },
       });
     } catch (error) {
-      res.status(500).json({ error: 'Erro ao listar usuarios' });
+      res.status(500).json({ error: 'Erro ao listar usuários' });
     }
   }
 
-  async show(req: Request, res: Response): Promise<void>{
-    try{
-        const { id } = req.params;
-        const showUser = new ShowUserService(User)
+  async show(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const showUser = new ShowUserService(User);
 
-        const user = await showUser.findUserById(id)
-        res.status(200).json(user);
-       
-    }catch(error){
-        res.status(500).json({ error: 'Erro ao encontrar usuário' });
+      const user = await showUser.findUserById(id);
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao encontrar usuário' });
     }
-
   }
 
+  async delete(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const deleteUser = new DeleteUserService(User);
 
-  async delete(req: Request, res: Response): Promise<void>{
-    try{
-        const { id } = req.params;
-        const deleteUser = new DeleteUserService(User)
-
-        const deleteduser = deleteUser.deleteUserById(id)
-        res.status(200).json(deleteduser);
-       
-    }catch(error){
-        res.status(500).json({ error: 'Erro ao deletar usuário' });
+      const deletedUser = await deleteUser.deleteUserById(id);
+      res.status(200).json(deletedUser);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao deletar usuário' });
     }
   }
 
   async update(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      const userData = req.body; 
-      const userService = new UpdateUserService(User); 
+      const userData = req.body;
+      const userService = new UpdateUserService(User);
 
       const updatedUser = await userService.updateUserById(id, userData);
 
